@@ -53,6 +53,16 @@ export const Calculadora = () => {
     }
   }
 
+  const btnDelete = () => {
+    const numberPositive = number.includes('-') ? number.replace('-', '') : number
+
+    if(numberPositive.length === 1){
+      setNumber('0')
+    }else{
+      setNumber(number.slice(0, -1))
+    }
+  }
+
   return (
     <View style={styles.calculadoraContainer}>
       <Text style={styles.resultadoPequeño}>{ numberBefore }</Text>
@@ -67,7 +77,7 @@ export const Calculadora = () => {
       <View style={styles.fila}>
         <BotonCalc texto="C" color="#9b9b9b" action={clear} />
         <BotonCalc texto="+/-" color="#9b9b9b" action={positiveNegative} />
-        <BotonCalc texto="del" color="#9b9b9b" action={clear} />
+        <BotonCalc texto="del" color="#9b9b9b" action={btnDelete} />
         <BotonCalc texto="/" color="#ff9427" action={clear} />
       </View>
 
